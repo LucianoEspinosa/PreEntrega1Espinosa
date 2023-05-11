@@ -1,21 +1,22 @@
+import hotsale from "./img/hotsale.png";
 const NavBar= ()=>{
     return(
-        <nav classlist="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul classlist="navbar-nav">
-                    <li classlist="nav-item">
-                        <a classlist="nav-link" href="##">Inicio</a>
+        <nav>
+                <ul class="nav justify-content-center align-items-center fs-5">
+                    <li class="nav-item">
+                        <a class="nav-link" href="##"><img src={hotsale} alt="hotsale" width={60} /></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white " href="##">Mas Vendidos</a>
                     </li>
                     <li classlist="nav-item">
-                        <a classlist="nav-link" href="##">Productos</a>
+                        <a class="nav-link text-white" href="##">Para Ellos</a>
                     </li>
-                    <li classlist="nav-item">
-                        <a classlist="nav-link" href="##">Quienes somos</a>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="##">Para Ellas</a>
                     </li>
-                    <li classlist="nav-item">
-                        <a classlist="nav-link" href="##">Contacto</a>
-                    </li>
-                    <li classlist="nav-item">
-                        <a classlist="nav-link" href="##">Portal de clientes</a>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="##">Contacto</a>
                     </li>
 
                 </ul>

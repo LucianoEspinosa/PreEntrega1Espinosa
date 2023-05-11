@@ -1,21 +1,21 @@
-import NavBar from "./NavBar";
 import logo from "./img/fragancesnet.png";
-
+import CartWidget from "./CartWidget";
+import NavBar from "./NavBar";
 const Header = () => {
     return (
-        <div classlist="navbar navbar-expand-md navbar-dark">
-            <h1>Fragances.net</h1>
-            <div classlist="align-items-end flex-md-column align-items-md-center">
-                <a href="index.html">
-                    <img src={logo} alt="logo fragances.net"/>
-                </a>
-                <button classlist="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span classlist="navbar-toggler-icon"></span>
-                </button>
-                <NavBar />  
+        <header className="bg-black p-2">
+        <div className="container">
+            <div class="row align-items-center">
+            <div className="col-4"><img src={logo} alt="logo de fragances.net" width={100}/></div>
+                <h1 className="col-4 text-center text-white">Fragances.net</h1>
+                
+                <div className="col-md-4 text-end">
+                    <CartWidget />
+                </div>
             </div>
-        </div>
+        </div >
+        <NavBar />
+        </header>
     )
 }
 export default Header;
