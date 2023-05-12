@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <header className="bg-black p-2">
         <div className="container">
-            <div class="row align-items-center">
+            <div className="row align-items-center">
             <div className="col-4"><img src={logo} alt="logo de fragances.net" width={100}/></div>
                 <h1 className="col-4 text-center text-white">Fragances.net</h1>
                 
