@@ -4,14 +4,15 @@ import mail from "./img/icon/envelope-at.svg";
 import phone from "./img/icon/telephone.svg";
 import facebook from "./img/icon/facebook.svg";
 import instagram from "./img/icon/instagram.svg";
+import { Link } from "react-router-dom";
 const Footer = () => {
     return (
         <div className="bg-body-secondary py-2">
             <div className="container">
                 <div className="row align-items-start py-3">
-                    <div className="col-3">
+                    <Link to={"/"} className="col-3">
                         <img src={logo} alt="logo fragances.net" width={170} />
-                    </div>
+                    </Link>
                     <div className="col-3">
                         <h5>INFO DE LA TIENDA</h5>
                         <div className="d-flex gap-1 mt-3">

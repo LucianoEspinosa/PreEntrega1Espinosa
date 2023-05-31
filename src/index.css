@@ -1,10 +1,10 @@
 body {
+  padding-top: 161px;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'League Spartan', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
@@ -15,3 +15,54 @@ h1,h2,h3,h4,h5,h6,p,span{
   margin: 0;
 }
 
+.tarjeta {
+  width: 200px;
+  overflow: hidden;
+  box-shadow: 5px 5px 20px rgb(0, 0, 0, 0.4);
+  border-radius: 6px;
+  margin: 30px;
+  padding-bottom: 10px;
+  background-color: white;
+}
+
+@media(min-width:576px) {
+  .tarjeta {
+      width: 300px;
+  }
+
+}
+.estiloPresentacion {
+  background-color: rgb(238, 238, 238);
+  border-radius: 50%;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  color: black;
+  
+  
+}
+.classPrecio {
+  padding: 5px;
+  font-weight: 600;
+  color: black;
+  font-size: 1.3rem;
+  
+
+}
+.card-title{
+  font-size: 1rem;
+    font-weight: 700;
+    color: black;
+}
+.card-text{
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: grey;
+}
+.card-presentacion{
+  font-size: 0.8rem;
+}
+.alto{
+min-height: calc(100vh - 341px);
+
+}

@@ -1,25 +1,28 @@
-import hotsale from "./img/hotsale.png";
+import CartWidget from "./CartWidget";
+import { NavLink } from "react-router-dom";
 const NavBar = () => {
     return (
-        <nav>
-            <ul className="nav justify-content-center align-items-center fs-5">
-                <li className="nav-item">
-                    <a className="nav-link" href="##"><img src={hotsale} alt="hotsale" width={60} /></a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link text-white " href="##">Mas Vendidos</a>
-                </li>
-                <li classlist="nav-item">
-                    <a className="nav-link text-white" href="##">Para Ellos</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link text-white" href="##">Para Ellas</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link text-white" href="##">Contacto</a>
-                </li>
-            </ul>
-        </nav>
+        <div>
+            <div>
+                <ul className="nav justify-content-center fs-5">
+                    <li className="nav-item">
+                        <NavLink className="nav-link text-white" to={"/masvendidos"}>Mas Vendidos</NavLink>
+                    </li>
+                    <li classlist="nav-item">
+                        <NavLink className="nav-link text-white" to={"/category/hombre"}>Para Ellos</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link text-white" to={"/category/mujer"}>Para Ellas</NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link text-white" to={"/category/unisex"}>Para Todos</NavLink>
+                    </li>
+                    <CartWidget />
+                </ul>
+            </div>
+
+        </div>
+
     )
 }
 export default NavBar;
