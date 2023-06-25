@@ -1,21 +1,26 @@
+import NavBar from "./Navbar";
 import logo from "./img/fragancesnet.png";
-import NavBar from "./NavBar";
+
 import { Link } from "react-router-dom";
 const Header = () => {
     return (
-        <header className="bg-black p-2 fixed-top">
-        <div className="container">
-            <div className="row align-items-center">
-            <Link to={"/"} className="col-4"><img src={logo} alt="logo de fragances.net" width={100}/></Link>
-            <Link to={"/"} className="col-4 text-white text-decoration-none text-center"><h1>Fragances.net</h1> </Link>
-                
-                <div className="col-md-4 text-end">
-                    <Link to= {"https://www.fragrantica.es/"} className="text-white text-decoration-none">Fragantica.es</Link>
+        <div className=" p-2 fixed-top cabecera">
+            <div className="container">
+                <div className="row">
+                    <div className="col-6 col-md-12">
+                        <Link to={"/"} className="text-decoration-none text-black  ">
+                            <h1 className="text-md-center">FRAGANCES.NET</h1>
+                        </Link>
+                    </div>
+                    <div className="col-6 text-end d-md-none">
+                        <Link to={"/"} className="">
+                            <img src={logo} alt="logo de fragances.net" width={32} />
+                        </Link>
+                    </div>
                 </div>
-            </div>
-        </div >
-        <NavBar />
-        </header>
+            </div >
+            <NavBar />
+        </div>
     )
 }
 export default Header;

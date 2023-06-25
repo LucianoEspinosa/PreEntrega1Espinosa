@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-const ItemCount = ({ stock }) => {
+import { Link } from "react-router-dom";
+const ItemCount = ({ stock, onAdd }) => {
 
     const [items, setItems] = useState(1);
     const [itemStock, setItemStock] = useState(stock);
+    const [itemAdded, setItemAdded] = useState(false);
 
     const sumarUnidad = () => {
         if (items < itemStock) {
@@ -15,10 +17,15 @@ const ItemCount = ({ stock }) => {
             setItems(items - 1);
         }
     }
-    const onAdd = () => {
+
+    const agregarAlCarrito = () => {
         if (items <= itemStock) {
             setItemStock(itemStock - items);
             setItems(1);
+            setItemAdded(true);
+            onAdd(items);
+            console.log("Seleccionaste " + items + " productos al carrito!\nTe quedan: " + itemStock + " productos");
+            
         }
     }
     useEffect(() => {
@@ -26,9 +33,9 @@ const ItemCount = ({ stock }) => {
     }, [stock])
 
     return (
-        <div className="container">
+        <div className="container my-3">
             <div className="row">
-                <div className="col text-center">
+                <div className="col d-flex justify-content-center">
                     <div className="btn-group" role="group" aria-label="Basic example">
                         <button type="button" className="btn btn-light card" onClick={restarUnidad}>-</button>
                         <button type="button" className="btn btn-light card">{items}</button>
@@ -36,12 +43,17 @@ const ItemCount = ({ stock }) => {
                     </div>
                 </div>
             </div>
-            <div className="row justify-content-center">
-                
-                    <button type="button" className="btn btn-light card col-4 mt-2" onClick={onAdd}>Agregar al carrito</button>
-                
+            <div className="row">
+                <div className="col d-flex justify-content-center">
+                    {itemAdded ? (
+                        <Link to={"/Cart"} className="btn btn-light card col-4 mt-2">Finalizar Compra</Link>
+                    ) : (
+                        <button type="button" className="btn btn-light card col-4 mt-2" onClick={agregarAlCarrito}>Agregar al carrito</button>
+                    )}
+                </div>
             </div>
         </div>
+
     )
 }
 
