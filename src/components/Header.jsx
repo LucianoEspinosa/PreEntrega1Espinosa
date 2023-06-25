@@ -1,4 +1,6 @@
-import NavBar from "./Navbar";
+
+
+import NavBar from "./NavBar";
 import logo from "./img/fragancesnet.png";
 
 import { Link } from "react-router-dom";
@@ -18,8 +20,9 @@ const Header = () => {
                         </Link>
                     </div>
                 </div>
+                <NavBar />
             </div >
-            <NavBar />
+            
         </div>
     )
 }

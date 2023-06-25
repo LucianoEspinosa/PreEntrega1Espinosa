@@ -1,9 +1,3 @@
-// import logo from "./img/logo-texto.png";
-// import location from "./img/icon/geo-alt-fill.svg";
-// import mail from "./img/icon/envelope-at.svg";
-// import phone from "./img/icon/telephone.svg";
-// import facebook from "./img/icon/facebook.svg";
-// import instagram from "./img/icon/instagram.svg";
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons';
