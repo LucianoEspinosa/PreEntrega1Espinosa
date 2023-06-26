@@ -10,19 +10,17 @@ const Footer = () => {
                 <div className="row">
                     <div className="col-md-4">
                         <h5>Información de contacto</h5>
-                        <p>Dirección: Calle Ejemplo 123, Ciudad</p>
-                        <p>Teléfono: +123456789</p>
-                        <p>Email: ejemplo@example.com</p>
+                        <p>Dirección: Florida 343, C.A.B.A.</p>
+                        <p>Teléfono: 123456789</p>
+                        <p>Email: fragances.net@gmail.com</p>
                     </div>
                     <div className="col-md-4">
                         <h5>Enlaces</h5>
                         <ul className="list-unstyled">
                             <li><Link to="/" className='text-decoration-none text-secondary'>Inicio</Link></li>
-                            <li><Link to="/productos" className='text-decoration-none text-secondary'>Productos</Link></li>
-                            <li><Link to="/servicios" className='text-decoration-none text-secondary'>Servicios</Link></li>
+                            <li><Link to="/" className='text-decoration-none text-secondary'>Productos</Link></li>
                             <li><Link to="/acerca-de" className='text-decoration-none text-secondary'>Acerca de</Link></li>
-                            <li><Link to="/contacto" className='text-decoration-none text-secondary'>Contacto</Link></li>
-                        </ul>
+                            </ul>
                     </div>
                     <div className="col-md-4">
                         <h5 className='text-center'>Síguenos en redes sociales</h5>

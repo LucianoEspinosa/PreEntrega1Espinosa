@@ -46,9 +46,11 @@ const ItemCount = ({ stock, onAdd }) => {
             <div className="row">
                 <div className="col d-flex justify-content-center">
                     {itemAdded ? (
-                        <Link to={"/Cart"} className="btn btn-light card col-4 mt-2">Finalizar Compra</Link>
+                        <div><Link to={"/Cart"} className="btn btn-primary my-2">Finalizar Compra</Link>
+                        <Link to={"/"} className=" d-block text-center mt-3"><span className="text-secondary text-decoration-underline vaciar">Volver a inicio</span></Link>
+                        </div>
                     ) : (
-                        <button type="button" className="btn btn-light card col-4 mt-2" onClick={agregarAlCarrito}>Agregar al carrito</button>
+                        <button type="button" className="btn btn-primary my-2" onClick={agregarAlCarrito}>Agregar al carrito</button>
                     )}
                 </div>
             </div>

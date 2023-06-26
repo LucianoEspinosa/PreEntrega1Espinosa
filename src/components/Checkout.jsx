@@ -13,7 +13,7 @@ const Checkout = () => {
   const [emailError, setEmailError] = useState("");
   const [telefonoError, setTelefonoError] = useState("");
 
-  const { cart, precioTotal } = useContext(CartContext);
+  const { cart, precioTotal,clear } = useContext(CartContext);
 
 
   const validarFormulario = () => {
@@ -47,6 +47,7 @@ const Checkout = () => {
       addDoc(OrderCollection, order)
         .then((resultado) => {
           setOrderId(resultado.id);
+          clear();
         })
         .catch((resultado) => {
           console.log("Error. No se pudo realizar la compra");
@@ -98,17 +99,17 @@ const Checkout = () => {
           <h3 className="text-decoration-underline">Checkout</h3>
           <div className="mb-3 mt-3">
             <label className="form-label">Nombre:</label>
-            <input type="text" className={`form-control ${nombreError && "is-invalid"}`} placeholder="Ingresa tu nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+            <input type="text" className={`form-control ${nombreError && "is-invalid"} fontImput`} placeholder="Ingresa tu nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />
             {nombreError && (<div className="invalid-feedback">{nombreError}</div>)}
           </div>
           <div className="mb-3">
             <label className="form-label">Email:</label>
-            <input type="email" className={`form-control ${emailError && "is-invalid"}`} placeholder="Ingresa tu correo electrónico" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email" className={`form-control ${emailError && "is-invalid"} fontImput `} placeholder="Ingresa tu correo electrónico" value={email} onChange={(e) => setEmail(e.target.value)} />
             {emailError && <div className="invalid-feedback">{emailError}</div>}
           </div>
           <div className="mb-3">
             <label className="form-label">Teléfono:</label>
-            <input type="tel" className={`form-control ${telefonoError && "is-invalid"}`} placeholder="Ingresa tu número de teléfono" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
+            <input type="tel" className={`form-control ${telefonoError && "is-invalid"} fontImput `} placeholder="Ingresa tu número de teléfono" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
             {telefonoError && (<div className="invalid-feedback">{telefonoError}</div>)}
           </div>
           <button className="btn btn-primary" onClick={realizarPedido}>Enviar</button>

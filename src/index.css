@@ -56,7 +56,7 @@ h1,h2,h3,h4,h5,h6,p,span{
   font-weight: 400;
   color: black;
   font-size: 1.3rem;
-  font-family: 'League Spartan'
+  font-family: 'League Spartan';
   
 
 }
@@ -74,7 +74,7 @@ h1,h2,h3,h4,h5,h6,p,span{
   font-size: 0.8rem;
 }
 .alto{
-min-height: calc(100vh - 300px);
+min-height: calc(100vh - 280px);
 background-color: rgb(250, 247, 242);
 
 }
@@ -89,4 +89,17 @@ background-color: rgb(250, 247, 242);
 }
 .vaciar{
   cursor: pointer;
+}
+.fontImput{
+  font-family: 'League Spartan';
+}
+.custom-button {
+  border: none;
+  outline: none;
+}
+.custom-button:hover,
+.custom-button:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
 }

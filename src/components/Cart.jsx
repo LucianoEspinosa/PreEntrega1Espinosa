@@ -22,7 +22,7 @@ const Cart = () => {
     }
 
     return (
-        <div className="container">
+        <div className="container alto">
             <div className="row">
                 <div className="col text-center my-5">
                     <h1 >Resumen de su compra</h1>
@@ -74,7 +74,7 @@ const Cart = () => {
             </div>
             <div className="row">
                 <div className="co text-end my-3">
-                <Link to={"/checkout"}><button className="btn btn-primary">Enviar</button></Link>
+                <Link to={"/checkout"}><button className="btn btn-primary">Finalizar Compra</button></Link>
                 </div>
 
             </div>
