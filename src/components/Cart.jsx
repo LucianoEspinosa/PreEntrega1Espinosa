@@ -52,7 +52,7 @@ const Cart = () => {
                                     <td> {item.nombre}</td>
                                     <td>{item.presentacion}</td>
                                     <td>{item.cantidad}</td>
-                                    <td>{item.precioFinal}</td>
+                                    <td>{item.precioFinal*item.cantidad}</td>
                                     <td className="vaciar"><FontAwesomeIcon icon={faTrash} onClick={() => removeItem(item.id)} /></td>
                                 </tr>
                             ))
@@ -73,7 +73,7 @@ const Cart = () => {
 
             </div>
             <div className="row">
-                <div className="co text-end my-3">
+                <div className="text-end my-3">
                 <Link to={"/checkout"}><button className="btn btn-primary">Finalizar Compra</button></Link>
                 </div>
 

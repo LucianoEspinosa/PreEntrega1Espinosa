@@ -1,30 +1,39 @@
 body {
-  /* padding-top: 161px; */
   padding-top: 120px;
   margin: 0;
-  /* font-family: 'League Spartan', sans-serif; */
   font-family: 'Playfair Display SC', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(250, 247, 242);
 
-  
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-} 
-h1,h2,h3,h4,h5,h6,p,span{
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
   margin: 0;
 }
-.cabecera{
-  box-shadow: 0px 4px 9px 0px rgba(0,0,0,0.05);
+
+.cabecera {
+  box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.05);
   background-color: rgb(250, 247, 242);
 }
-.foot{
-  box-shadow: 0px 7px 9px 0px rgba(0,0,0,0.05) inset;
+
+.foot {
+  box-shadow: 0px 7px 9px 0px rgba(0, 0, 0, 0.05) inset;
 }
+
 .tarjeta {
   width: 230px;
   overflow: hidden;
@@ -37,10 +46,11 @@ h1,h2,h3,h4,h5,h6,p,span{
 
 @media(min-width:576px) {
   .tarjeta {
-      width: 230px;
+    width: 230px;
   }
 
 }
+
 .estiloPresentacion {
   background-color: rgb(238, 238, 238);
   border-radius: 50%;
@@ -48,36 +58,42 @@ h1,h2,h3,h4,h5,h6,p,span{
   width: 48px;
   height: 48px;
   color: black;
-  
-  
+
+
 }
+
 .classPrecio {
   padding: 5px;
   font-weight: 400;
   color: black;
   font-size: 1.3rem;
   font-family: 'League Spartan';
-  
+
 
 }
-.card-title{
+
+.card-title {
   font-size: 1rem;
-    font-weight: 700;
-    color: black;
+  font-weight: 700;
+  color: black;
 }
-.card-text{
+
+.card-text {
   font-size: 1.2rem;
   font-weight: 300;
   color: grey;
 }
-.card-presentacion{
+
+.card-presentacion {
   font-size: 0.8rem;
 }
-.alto{
-min-height: calc(100vh - 280px);
-background-color: rgb(250, 247, 242);
+
+.alto {
+  min-height: calc(100vh - 280px);
+  background-color: rgb(250, 247, 242);
 
 }
+
 .descuento {
   text-decoration: line-through;
 }
@@ -87,16 +103,20 @@ background-color: rgb(250, 247, 242);
   font-size: 16px;
   margin-top: 10px;
 }
-.vaciar{
+
+.vaciar {
   cursor: pointer;
 }
-.fontImput{
+
+.fontImput {
   font-family: 'League Spartan';
 }
+
 .custom-button {
   border: none;
   outline: none;
 }
+
 .custom-button:hover,
 .custom-button:focus {
   border: none;

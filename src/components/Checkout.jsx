@@ -81,7 +81,7 @@ const Checkout = () => {
                     <td> {item.nombre}</td>
                     <td>{item.presentacion}</td>
                     <td>{item.cantidad}</td>
-                    <td>{item.precioFinal}</td>
+                    <td>{item.precioFinal*item.cantidad}</td>
                   </tr>
                 ))
               }
