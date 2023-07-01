@@ -1,11 +1,15 @@
 body {
-  padding-top: 120px;
+  padding-top: 135px;
   margin: 0;
   font-family: 'Playfair Display SC', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(250, 247, 242);
-
+}
+@media(min-width:576px) {
+  body {
+    padding-top: 159px;
+  }
 
 }
 
@@ -26,7 +30,7 @@ span {
 }
 
 .cabecera {
-  box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.05); */
   background-color: rgb(250, 247, 242);
 }
 
