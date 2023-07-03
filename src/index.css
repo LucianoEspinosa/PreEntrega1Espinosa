@@ -48,11 +48,11 @@ span {
   background-color: white;
 }
 
+
 @media(min-width:576px) {
   .tarjeta {
     width: 230px;
   }
-
 }
 
 .estiloPresentacion {
@@ -130,6 +130,13 @@ span {
 .fondo{
   background-color: #f2c2b8;
 }
+
 .logoStyle{
-  max-width:50px
+  max-width:50px;
 }
+@media(min-width:765px) {
+  .logoStyle{
+    max-width:none ;
+  }
+  }
+  
