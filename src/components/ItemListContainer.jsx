@@ -29,12 +29,12 @@ const ItemListContainer = ({ top, oferta,titulo }) => {
     
     return (
         <div className="container alto my-5">
-            <div className="row">
-                <div className="col text-center">
+            <div className="row text-center">
+                <div className="col">
                     {id?<h1>{id}</h1>:titulo?<h1>{titulo}</h1>:<h1>Fragancias de diseñador</h1>}
                 </div>
             </div>
-            <div className="row ">
+            <div className="row justify-content-center ">
                 {loading ? <Loading /> : <ItemList items={items} />}
             </div>
 

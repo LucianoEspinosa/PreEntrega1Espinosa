@@ -1,5 +1,5 @@
 body {
-  padding-top: 135px;
+  padding-top: 64px;
   margin: 0;
   font-family: 'Playfair Display SC', serif;
   -webkit-font-smoothing: antialiased;
@@ -8,7 +8,7 @@ body {
 }
 @media(min-width:576px) {
   body {
-    padding-top: 159px;
+    padding-top: 150px;
   }
 
 }
@@ -30,7 +30,7 @@ span {
 }
 
 .cabecera {
-  /* box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.05); */
+  box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.05);
   background-color: rgb(250, 247, 242);
 }
 
@@ -126,4 +126,10 @@ span {
   border: none;
   outline: none;
   box-shadow: none;
+}
+.fondo{
+  background-color: #f2c2b8;
+}
+.logoStyle{
+  max-width:50px
 }

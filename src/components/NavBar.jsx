@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Collapse } from "react-bootstrap";
+
 import { FaBars, FaTimes } from "react-icons/fa";
 import CartWidget from "./CartWidget";
-import logo from "./img/logo-texto2.png";
+import logo from "./img/fragancesnet.png";
 
 const NavBar = () => {
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -39,184 +39,123 @@ const NavBar = () => {
         }
     };
 
-    return (
-        <div className="container fixed-top cabecera ">
-            <nav className="row navbar navbar-expand-md fs-7 fs-md-5 d-flex align-items-center" onScroll={handleScroll}>
-                <Link to={"/"} className="col-2 d-md-flex">
-                    <img src={logo} className="w-50" alt="logo de fragances.net" />
-                </Link>
-
-                <Collapse in={isNavOpen}>
-                    <div ref={navRef} className="collapse navbar-collapse justify-content-md-center col-md-8 py-0" id="navbarNav">
-                        <ul className="navbar-nav">
-                            <li className="nav-item">
-                                <Link className="nav-link" to={"ofertas"}>
-                                    Ofertas
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to={"masvendidos"}>
-                                    Mas Vendidos
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to={"/category/hombre"}>
-                                    Para Ellos
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to={"/category/mujer"}>
-                                    Para Ellas
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to={"/category/unisex"}>
-                                    Para Todos
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                </Collapse>
-                <div className="col-1 col-md-2 d-flex">
-                    <CartWidget />
-                    <button className="col-1  navbar-toggler custom-button d-md-none" type="button" onClick={toggleNav}>
-                        {isNavOpen ? <FaTimes /> : <FaBars />}
-                    </button>
-
-                </div>
-
-            </nav>
-        </div>
-    );
-};
-
-export default NavBar;
-
-
-
-// import React, { useState, useRef, useEffect } from "react";
-// import { Link } from "react-router-dom";
-// import { Collapse } from "react-bootstrap";
-// import CartWidget from "./CartWidget";
-// import logo from "./img/fragancesnet.png";
-
-// const NavBar = () => {
-//     const [isNavOpen, setIsNavOpen] = useState(false);
-//     const navRef = useRef(null);
-
-//     useEffect(() => {
-//         const handleClickOutside = (event) => {
-//             if (navRef.current && !navRef.current.contains(event.target)) {
-//                 setIsNavOpen(false);
-//             }
-//         };
-
-//         const handleScroll = () => {
-//             setIsNavOpen(false);
-//         };
-
-//         document.addEventListener("mousedown", handleClickOutside);
-//         window.addEventListener("scroll", handleScroll);
-
-//         return () => {
-//             document.removeEventListener("mousedown", handleClickOutside);
-//             window.removeEventListener("scroll", handleScroll);
-//         };
-//     }, []);
-
-//     const toggleNav = () => {
-//         setIsNavOpen(!isNavOpen);
-//     };
-
 //     return (
-//         <nav className="container navbar navbar-expand-md fs-7 fs-md-5 d-flex align-items-center">
-//             <Link to={"/"} className="col-2 d-md-flex d-none">
-//                 <img src={logo} alt="logo de fragances.net" width={36} />
-//             </Link>
-//             <button
-//                 className="navbar-toggler custom-button d-md-none"
-//                 type="button"
-//                 onClick={toggleNav}
-//             >
-//                 <span className="navbar-toggler-icon"></span>
-//             </button>
-//             <Collapse in={isNavOpen}>
-//                 <div
-//                     ref={navRef}
-//                     className="collapse navbar-collapse justify-content-md-center col-md-8"
-//                     id="navbarNav"
-//                 >
+//         <div className="fixed-top cabecera">
+//         <div className="container">
+//             <div className="row navbar navbar-expand-md fs-7 fs-md-5 d-flex align-items-end align-items-md-center" onScroll={handleScroll}>
+//                 <Link to={"/"} className="col-1 col-md-2 d-flex  text-decoration-none">
+//                     <img src={logo} className="w-50" alt="logo de fragances.net" />
+                    
+                
+//                 </Link>
+//                 <h1 className="col-8 d-md-none ">Fragances.net</h1>
+
+//                 {/* <div className="col-2 d-flex d-md-none align-items-center"> */}
+//                     <div className="col-1 d-md-none"><CartWidget  /></div>
+//                     <div className="col-2"><button className="  navbar-toggler custom-button d-md-none" type="button" onClick={toggleNav}>{isNavOpen ? <FaTimes /> : <FaBars />}</button></div>
+                    
+//                 {/* </div> */}
+
+
+//                 <div ref={navRef} className={`col-md-8 collapse navbar-collapse flex-column py-0  ${isNavOpen ? 'show' : ''}`} id="navbarNav">
+//                 <h1 className="d-none d-md-block mb-4">Fragances.net</h1>
 //                     <ul className="navbar-nav">
+                        
 //                         <li className="nav-item">
-//                             <Link className="nav-link" to={"ofertas"}>
+//                             <Link className="nav-link py-0" to={"ofertas"}>
 //                                 Ofertas
 //                             </Link>
 //                         </li>
 //                         <li className="nav-item">
-//                             <Link className="nav-link" to={"masvendidos"}>
+//                             <Link className="nav-link py-0" to={"masvendidos"}>
 //                                 Mas Vendidos
 //                             </Link>
 //                         </li>
 //                         <li className="nav-item">
-//                             <Link className="nav-link" to={"/category/hombre"}>
+//                             <Link className="nav-link py-0" to={"/category/hombre"}>
 //                                 Para Ellos
 //                             </Link>
 //                         </li>
 //                         <li className="nav-item">
-//                             <Link className="nav-link" to={"/category/mujer"}>
+//                             <Link className="nav-link py-0" to={"/category/mujer"}>
 //                                 Para Ellas
 //                             </Link>
 //                         </li>
 //                         <li className="nav-item">
-//                             <Link className="nav-link" to={"/category/unisex"}>
+//                             <Link className="nav-link py-0 " to={"/category/unisex"}>
 //                                 Para Todos
 //                             </Link>
 //                         </li>
 //                     </ul>
 //                 </div>
-//             </Collapse>
-//             <div className="col-md-2">
-//                 <CartWidget />
+
+//                 <div className={`col-2 col-md-2 d-none d-md-flex justify-content-end align-items-center ${isNavOpen ? 'justify-content-start' : ''}`}>
+//                     <CartWidget />
+//                 </div>
 //             </div>
-//         </nav>
+//         </div>
+//         </div>
 //     );
 // };
 
 // export default NavBar;
 
 
+return (
+    <div className="fixed-top cabecera">
+    <div className="container">
+        <div className="row navbar navbar-expand-md fs-7 fs-md-5 d-flex align-items-end align-items-md-center" onScroll={handleScroll}>
+            <Link to={"/"} className="col-8 col-md-2 d-flex align-items-end text-decoration-none text-black">
+                <img src={logo} className="w-50 logoStyle" alt="logo de fragances.net" />
+                <h1 className=" d-md-none ">Fragances.net</h1>
+            
+            </Link>
+            <div className="col-4 col-md-2 d-flex d-md-none align-items-center  justify-content-end">
+                <CartWidget />
+                <button className="navbar-toggler custom-button d-md-none" type="button" onClick={toggleNav}>{isNavOpen ? <FaTimes /> : <FaBars />}</button>
+            </div>
 
 
+            <div ref={navRef} className={`col-md-8 collapse navbar-collapse flex-column py-0  ${isNavOpen ? 'show' : ''}`} id="navbarNav">
+            <h1 className="d-none d-md-block mb-4">Fragances.net</h1>
+                <ul className="navbar-nav">
+                    
+                    <li className="nav-item">
+                        <Link className="nav-link py-0" to={"ofertas"}>
+                            Ofertas
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link py-0" to={"masvendidos"}>
+                            Mas Vendidos
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link py-0" to={"/category/hombre"}>
+                            Para Ellos
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link py-0" to={"/category/mujer"}>
+                            Para Ellas
+                        </Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link py-0 " to={"/category/unisex"}>
+                            Para Todos
+                        </Link>
+                    </li>
+                </ul>
+            </div>
 
-// import CartWidget from "./CartWidget";
-// import { NavLink, Link } from "react-router-dom";
-// import logo from "./img/fragancesnet.png";
-// import { NavDropdown } from "react-bootstrap"; // Agregar esta líneanp
+            <div className={`col-2 col-md-2 d-none d-md-flex justify-content-end align-items-center ${isNavOpen ? 'justify-content-start' : ''}`}>
+                <CartWidget />
+            </div>
+        </div>
+    </div>
+    </div>
+);
+};
 
+export default NavBar;
 
-// const NavBar = () => {
-//     return (
-//         <nav className="container navbar navbar-expand-md fs-7 fs-md-5 d-flex align-items-baseline">
-
-//             <Link to={"/"} className="col-2 d-md-flex d-none "><img src={logo} alt="logo de fragances.net" width={36} /></Link>
-//             <button className="navbar-toggler custom-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-//                 <span className="navbar-toggler-icon"></span>
-//             </button>
-//             <div className="collapse navbar-collapse  justify-content-md-center col-md-8" id="navbarNav">
-//                 <ul className="navbar-nav">
-//                     <li className="nav-item"><NavLink className="nav-link" to={"ofertas"}>Ofertas</NavLink></li>
-//                     <li className="nav-item"><NavLink className="nav-link" to={"masvendidos"}>Mas Vendidos</NavLink></li>
-//                     <li className="nav-item"><NavLink className="nav-link" to={"/category/hombre"}>Para Ellos</NavLink></li>
-//                     <li className="nav-item"><NavLink className="nav-link" to={"/category/mujer"}>Para Ellas</NavLink></li>
-//                     <li className="nav-item"><NavLink className="nav-link" to={"/category/unisex"}>Para Todos</NavLink></li>
-//                 </ul>
-//             </div>
-//             <div className="col-md-2">
-//                 <CartWidget />
-//             </div>
-
-//         </nav>
-//     );
-// }
-
-// export default NavBar;
