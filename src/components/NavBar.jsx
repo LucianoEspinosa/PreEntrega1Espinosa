@@ -118,30 +118,30 @@ return (
 
             <div ref={navRef} className={`col-md-8 collapse navbar-collapse flex-column py-0  ${isNavOpen ? 'show' : ''}`} id="navbarNav">
             <h1 className="d-none d-md-block mb-4">Fragances.net</h1>
-                <ul className="navbar-nav">
+                <ul className="navbar-nav mt-2 mt-md-0">
                     
                     <li className="nav-item">
-                        <Link className="nav-link py-0" to={"ofertas"}>
+                        <Link className="nav-link py-0 py-2" to={"ofertas"}>
                             Ofertas
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link py-0" to={"masvendidos"}>
+                        <Link className="nav-link py-0  py-2" to={"masvendidos"}>
                             Mas Vendidos
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link py-0" to={"/category/hombre"}>
+                        <Link className="nav-link py-0  py-2" to={"/category/hombre"}>
                             Para Ellos
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link py-0" to={"/category/mujer"}>
+                        <Link className="nav-link py-0  py-2" to={"/category/mujer"}>
                             Para Ellas
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link py-0 " to={"/category/unisex"}>
+                        <Link className="nav-link py-0  py-2" to={"/category/unisex"}>
                             Para Todos
                         </Link>
                     </li>

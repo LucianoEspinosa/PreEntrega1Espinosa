@@ -1,5 +1,5 @@
 body {
-  padding-top: 64px;
+  padding-top: 68px;
   margin: 0;
   font-family: 'Playfair Display SC', serif;
   -webkit-font-smoothing: antialiased;
@@ -8,7 +8,7 @@ body {
 }
 @media(min-width:576px) {
   body {
-    padding-top: 150px;
+    padding-top: 112px;
   }
 
 }
