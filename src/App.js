@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react';
-import Header from './components/Header';
 import Footer from './components/Footer';
 import Cart from './components/Cart';
 import ItemListContainer from './components/ItemListContainer';
@@ -12,6 +11,9 @@ import Checkout from './components/Checkout';
 import ThankYou from './components/ThankYou';
 import ScrollToTop from './components/ScrollToTop';
 import NavBar from './components/NavBar';
+import Administrator from './components/Adminstrator';
+import AddProduct from './components/AddProduct'
+import EditProduct from './components/EditProduct';
 
 
 function App() {
@@ -33,6 +35,10 @@ function App() {
             <Route path={'/checkout'} element={<Checkout />} />
             <Route path={'/thankyou/:orderId'} element={<ThankYou />} />
             <Route path={'*'} element={<Error404 />} />
+            <Route path={'/administrator'} element={<Administrator />} />
+            <Route path="/add-product" element={<AddProduct/>} />
+            <Route path="/edit/:id" element={<EditProduct/>} />
+
           </Routes>
           <Footer />
         </BrowserRouter>

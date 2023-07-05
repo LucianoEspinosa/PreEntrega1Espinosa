@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { CartContext } from "./context/CartContext";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, doc, updateDoc} from "firebase/firestore";
 import { Navigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -40,11 +40,28 @@ const Checkout = () => {
       .then((resultado) => {
         setOrderId(resultado.id);
         clear();
+        // Actualizar el stock de los productos en Firestore
+        const productCollection = collection(db, "fragancias");
+        cart.forEach((item) => {
+          const productRef = doc(productCollection, item.id);
+          updateDoc(productRef, { stock: item.stock - item.cantidad })
+            .then(() => {
+              console.log(`Stock actualizado para el producto ${item.id}`);
+            })
+            .catch((error) => {
+              console.log(`Error al actualizar el stock para el producto ${item.id}`, error);
+            });
+        });
       })
+        
       .catch((resultado) => {
         console.log("Error. No se pudo realizar la compra");
       });
-  };
+  
+    };
+
+ 
+  
 
   return (
     <div className="container" style={{ minHeight: "60vh" }}>

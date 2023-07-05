@@ -29,13 +29,6 @@ const Table = ({ cart, trush }) => {
                         </td>
                         <td>{item.marca} {item.nombre}({item.presentacion})</td>
                         <td>{item.cantidad}</td>
-                        {/* <td>
-                            <div className="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" className="btn btn-light card" >-</button>
-                                <button type="button" className="btn btn-light card">{item.cantidad}</button>
-                                <button type="button" className="btn btn-light card">+</button>
-                            </div>
-                        </td> */}
                         <td>{item.precioFinal * item.cantidad}</td>
                         {trush && <td className="vaciar"><FontAwesomeIcon icon={faTrash} onClick={() => removeItem(item.id)} /></td>}
                     </tr>
