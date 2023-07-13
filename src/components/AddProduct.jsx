@@ -95,7 +95,7 @@ const AddProduct = () => {
                     <input type="number" className="form-control" id="stock" name="stock" value={nuevoProducto.stock} onChange={handleInputChange} />
                 </div>
                 <button type="button" className="btn btn-primary col-md-3" onClick={agregarProducto}>Enviar</button>
-                <Link to="/administrator" className="btn btn-primary col-md-3 offset-md-6">Regresar</Link>
+                <Link to="/admin" className="btn btn-primary col-md-3 offset-md-6">Regresar</Link>
             </form>
         </div>
     );

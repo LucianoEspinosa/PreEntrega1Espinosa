@@ -1,36 +1,69 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
+// import { useParams, Link, Navigate } from "react-router-dom";
+// import { getDoc, doc, updateDoc, getFirestore } from "firebase/firestore";
+
+
+// const EditProduct = () => {
+//     const { id } = useParams();
+//     const [item, setItem] = useState({});
+//     const [updated, setUpdated] = useState(false);
+
+//     useEffect(() => {
+//         const db = getFirestore();
+//         const producto = doc(db, "fragancias", id);
+//         getDoc(producto).then(resultado => {
+//             if (resultado.exists()) {
+//                 setItem({ id: resultado.id, ...resultado.data() })
+//             } else {
+//                 console.error("Error! No se encontró el producto!");
+//             }
+//         });
+//     }, []);
+
+//     const handleInputChange = (e) => {
+//         const { name, value } = e.target;
+//         setItem((prevItem) => ({
+//             ...prevItem,
+//             [name]: value
+//         }));
+//     };
+//     const actualizarProducto = () => {
+//         const db = getFirestore();
+//         const productoRef = doc(db, "fragancias", id);
+//         updateDoc(productoRef, item)
+//             .then(() => {
+//                 console.log("Producto actualizado correctamente");
+//                 setUpdated(true);
+//             })
+//             .catch((error) => {
+//                 console.error("Error al actualizar el producto:", error);
+//             });
+//     };
+
+//     if (updated) {
+//         return <Navigate to="/administrator" />;
+//     }
+import { useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
-import { getDoc, doc, updateDoc, getFirestore } from "firebase/firestore";
+import { updateDoc, getFirestore, doc } from "firebase/firestore";
 
-
-const EditProduct = () => {
+const EditProduct = ({ item }) => {
     const { id } = useParams();
-    const [item, setItem] = useState({});
     const [updated, setUpdated] = useState(false);
-
-    useEffect(() => {
-        const db = getFirestore();
-        const producto = doc(db, "fragancias", id);
-        getDoc(producto).then(resultado => {
-            if (resultado.exists()) {
-                setItem({ id: resultado.id, ...resultado.data() })
-            } else {
-                console.error("Error! No se encontró el producto!");
-            }
-        });
-    }, []);
+    const [editedItem, setEditedItem] = useState(item);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setItem((prevItem) => ({
+        setEditedItem((prevItem) => ({
             ...prevItem,
             [name]: value
         }));
     };
+
     const actualizarProducto = () => {
         const db = getFirestore();
         const productoRef = doc(db, "fragancias", id);
-        updateDoc(productoRef, item)
+        updateDoc(productoRef, editedItem)
             .then(() => {
                 console.log("Producto actualizado correctamente");
                 setUpdated(true);
@@ -39,7 +72,7 @@ const EditProduct = () => {
                 console.error("Error al actualizar el producto:", error);
             });
     };
-    
+
     if (updated) {
         return <Navigate to="/administrator" />;
     }
@@ -90,7 +123,7 @@ const EditProduct = () => {
                 </div>
             </form>
             <button type="button" className="btn btn-primary col-md-2 offset-md-2" onClick={actualizarProducto}>Actualizar</button>
-            <Link to="/administrator" className="btn btn-primary  col-md-2 offset-md-4">Regresar</Link>
+            <Link to="/admin" className="btn btn-primary  col-md-2 offset-md-4">Regresar</Link>
         </div>
     );
 };

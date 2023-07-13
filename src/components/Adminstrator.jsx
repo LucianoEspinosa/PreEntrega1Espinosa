@@ -1,106 +1,71 @@
 import { useEffect, useState } from "react";
-import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { getFirestore, collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import logo from "./img/fragancesnet.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
 
 const Administrator = () => {
-    const db = getFirestore();
-    const [productos, setProductos] = useState([]);
-    const [nuevoProducto, setNuevoProducto] = useState({
-        categoria: "",
-        descripcion: "",
-        descuento: 0,
-        img: "",
-        marca: "",
-        nombre: "",
-        precio: 0,
-        presentacion: "",
-        stock: 0
-    });
+    const [items, setItems] = useState([]);
+
+
 
     useEffect(() => {
-        obtenerProductos()
-            .then((productos) => {
-                setProductos(productos);
-            })
-            .catch((error) => {
-                console.error("Error al obtener los productos", error);
-            });
-    }, []);
+        console.log("consultando");
+        const db = getFirestore();
+        const itemsCollection = collection(db, "fragancias");
+        getDocs(itemsCollection).then(resultado => {
+            if (resultado.size > 0) {
+                setItems(resultado.docs.map(producto => ({ id: producto.id, ...producto.data() })));
 
-    const obtenerProductos = async () => {
-        const fraganciasCollection = collection(db, "fragancias");
-        const snapshot = await getDocs(fraganciasCollection);
-        const productos = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        return productos;
-    };
+            } else {
+                console.error("Error! No se encontraron productos en la colleccion!")
+            }
+        })
+    }, [items]);
 
-    const editarProducto = async (productId, newData) => {
-        const productRef = doc(collection(db, "fragancias"), productId);
-        await updateDoc(productRef, newData);
-        console.log(`Producto ${productId} actualizado`);
-        obtenerProductos()
-            .then((productos) => {
-                setProductos(productos);
-            })
-            .catch((error) => {
-                console.error("Error al obtener los productos después de la edición", error);
-            });
-    };
+
 
     const borrarProducto = async (productId) => {
+        const db = getFirestore();
         const productRef = doc(collection(db, "fragancias"), productId);
-        await deleteDoc(productRef);
-        console.log(`Producto ${productId} eliminado`);
-        obtenerProductos()
-            .then((productos) => {
-                setProductos(productos);
-            })
-            .catch((error) => {
-                console.error("Error al obtener los productos después de la eliminación", error);
-            });
+
+        try {
+            await deleteDoc(productRef);
+            console.log(`Producto ${productId} eliminado en la base de datos`);
+
+            const filteredItems = items.filter(item => item.id !== productId);
+            setItems(filteredItems);
+            console.log(`Producto ${productId} eliminado del estado local`);
+        } catch (error) {
+            console.error("Error al eliminar el producto", error);
+        }
     };
 
-    const agregarProducto = async () => {
-        const fraganciasCollection = collection(db, "fragancias");
-        await addDoc(fraganciasCollection, nuevoProducto);
-        console.log("Nuevo producto agregado");
-        setNuevoProducto({
-            categoria: "",
-            descripcion: "",
-            descuento: 0,
-            img: "",
-            marca: "",
-            nombre: "",
-            precio: 0,
-            presentacion: "",
-            stock: 0
-        });
-        obtenerProductos()
-            .then((productos) => {
-                setProductos(productos);
-            })
-            .catch((error) => {
-                console.error("Error al obtener los productos después de la adición", error);
-            });
-    };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setNuevoProducto((prevProducto) => ({
-            ...prevProducto,
-            [name]: value
-        }));
-    };
+    // const borrarProducto = async () => {
+    //     const db = getFirestore();
+    //     const productRef = doc(collection(db, "fragancias"), productId);
+    //     await deleteDoc(productRef);
+    //     console.log(`Producto ${productId} eliminado`);
+    //     obtenerProductos()
+    //         .then((productos) => {
+    //             setItems(productos);
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error al obtener los productos después de la eliminación", error);
+    //         });
+    // };
+
+
+
 
     return (
         <div className="container py-5">
-            <h1>Administrador de Fragancias</h1>
-            <div>
-                <h2>Lista de Productos</h2>
-                <table className="table table-sm text-center mt-3">
+            <div className="row text-center"><h1>Administrador de Fragancias</h1></div>
+            <div className="row mt-4"> <h2>Lista de Productos</h2></div>
+            <div className="row justify-content-center">
+                <table className="table table-sm text-center mt-3 ">
                     <thead>
                         <tr>
                             <th scope="col">
@@ -113,7 +78,7 @@ const Administrator = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {productos.map((item) => (
+                        {items.map((item) => (
                             <tr key={item.id}>
                                 <td>
                                     <img src={item.img} alt={item.nombre} width={20} />{" "}
@@ -121,17 +86,11 @@ const Administrator = () => {
                                 <td>{item.marca} {item.nombre}({item.presentacion})</td>
                                 <td>{item.stock}</td>
                                 <td>{item.precio}</td>
-                                <td>
-                                    {/* <Link to={`/edit/${item.id}`}>
-                                        <FontAwesomeIcon icon={faPencilAlt} />
-                                    </Link> */}
-                                    <Link to={{ pathname: `/edit/${item.id}`, state: { item } }}>
-                                        <FontAwesomeIcon icon={faPencilAlt} />
-                                    </Link>
+                                <td className="d-flex justify-content-center gap-2">
 
-                                    <button onClick={() => borrarProducto(item.id)}>
-                                        <FontAwesomeIcon icon={faTrashAlt} />
-                                    </button>
+                                    <button className="border-0" ><Link to={{ pathname: `/edit/${item.id}`, state: { item } }} className="text-success"><FontAwesomeIcon icon={faPencilAlt} /></Link></button>
+
+                                    <button onClick={() => borrarProducto(item.id)} className="text-danger border-0"><FontAwesomeIcon icon={faTrashAlt} /></button>
                                 </td>
                             </tr>
                         ))}
@@ -146,5 +105,4 @@ const Administrator = () => {
         </div>
     );
 };
-
 export default Administrator;

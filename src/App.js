@@ -35,7 +35,7 @@ function App() {
             <Route path={'/checkout'} element={<Checkout />} />
             <Route path={'/thankyou/:orderId'} element={<ThankYou />} />
             <Route path={'*'} element={<Error404 />} />
-            <Route path={'/administrator'} element={<Administrator />} />
+            <Route path={'/admin'} element={<Administrator />} />
             <Route path="/add-product" element={<AddProduct/>} />
             <Route path="/edit/:id" element={<EditProduct/>} />
 

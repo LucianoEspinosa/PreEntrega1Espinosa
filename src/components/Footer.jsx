@@ -8,13 +8,13 @@ const Footer = () => {
         <footer className="footer  border-top border-bottom" style={{ backgroundColor: 'rgb(250, 247, 242)' }}>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4">
+                    <div className="d-none d-md-flex flex-md-column col-md-4">
                         <h5>Información de contacto</h5>
                         <p>Dirección: Florida 343, C.A.B.A.</p>
                         <p>Teléfono: 123456789</p>
                         <p>Email: fragances.net@gmail.com</p>
                     </div>
-                    <div className="col-md-4">
+                    <div className="d-none d-md-flex flex-md-column col-md-4">
                         <h5>Enlaces</h5>
                         <ul className="list-unstyled">
                             <li><Link to="/" className='text-decoration-none text-secondary'>Inicio</Link></li>
@@ -35,7 +35,7 @@ const Footer = () => {
                 </div>
                 <div className="row">
                     <div className="col-md-12 text-center">
-                        <p className="mt-3">Todos los derechos reservados &copy; 2023</p>
+                        <p className="mt-md-3">Todos los derechos reservados &copy; 2023</p>
                     </div>
                 </div>
             </div>
