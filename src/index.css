@@ -139,4 +139,15 @@ span {
     max-width:none ;
   }
   }
+  @media (max-width: 767px) {
+    .brand {
+      display: none;
+    }
+  }
+  
+  
+  
+  
+  
+  
   

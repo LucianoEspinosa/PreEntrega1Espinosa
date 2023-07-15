@@ -22,7 +22,7 @@ const Administrator = () => {
                 console.error("Error! No se encontraron productos en la colleccion!")
             }
         })
-    }, [items]);
+    }, []);
 
 
 
@@ -63,16 +63,17 @@ const Administrator = () => {
     return (
         <div className="container py-5">
             <div className="row text-center"><h1>Administrador de Fragancias</h1></div>
-            <div className="row mt-4"> <h2>Lista de Productos</h2></div>
-            <div className="row justify-content-center">
+            <div className="row mt-4 text-center text-md-start"> <h2>Lista de Productos</h2></div>
+            <div className="row justify-content-center px-2 px-md-0 table-container">
                 <table className="table table-sm text-center mt-3 ">
                     <thead>
                         <tr>
-                            <th scope="col">
+                            <th scope="col" className="">
                                 <img src={logo} alt="logotipo fragances.net" width={20} />{" "}
                             </th>
                             <th scope="col">Producto</th>
-                            <th scope="col">Cantidad</th>
+                            <th scope="col"className="d-none d-md-block">Cantidad</th>
+                            <th scope="col" className="d-md-none">Cant</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Acciones</th>
                         </tr>
@@ -80,15 +81,21 @@ const Administrator = () => {
                     <tbody>
                         {items.map((item) => (
                             <tr key={item.id}>
-                                <td>
+                                <td className="">
                                     <img src={item.img} alt={item.nombre} width={20} />{" "}
                                 </td>
-                                <td>{item.marca} {item.nombre}({item.presentacion})</td>
+                                <td className="product-name">
+                                    {item.marca && (
+                                        <span className="brand">{item.marca} </span>
+                                    )}
+                                    {item.nombre} ({item.presentacion})
+                                </td>
+                                {/* <td>{item.marca} {item.nombre}({item.presentacion})</td> */}
                                 <td>{item.stock}</td>
                                 <td>{item.precio}</td>
                                 <td className="d-flex justify-content-center gap-2">
 
-                                    <button className="border-0" ><Link to={{ pathname: `/edit/${item.id}`, state: { item } }} className="text-success"><FontAwesomeIcon icon={faPencilAlt} /></Link></button>
+                                    <button className="border-0" ><Link to={{ pathname: `/edit/${item.id}` }} className="text-success"><FontAwesomeIcon icon={faPencilAlt} /></Link></button>
 
                                     <button onClick={() => borrarProducto(item.id)} className="text-danger border-0"><FontAwesomeIcon icon={faTrashAlt} /></button>
                                 </td>

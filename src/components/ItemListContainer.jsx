@@ -7,12 +7,13 @@ import Loading from "./Loading";
 
 
 
-const ItemListContainer = ({ top, oferta,titulo }) => {
+const ItemListContainer = ({ top, oferta, titulo }) => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const { id } = useParams();
-    
+
     useEffect(() => {
+        console.log("consultando");
         const db = getFirestore();
         const itemsCollection = collection(db, "fragancias");
         const q = oferta ? query(itemsCollection, where("descuento", ">", 0)) : id ? query(itemsCollection, where("categoria", "==", id)) : top ? query(itemsCollection, where("stock", "<", 15)) : itemsCollection;
@@ -24,14 +25,14 @@ const ItemListContainer = ({ top, oferta,titulo }) => {
                 console.error("Error! No se encontraron productos en la colleccion!")
             }
         })
-    }, [id, top,oferta]);
+    }, [id, top, oferta]);
 
-    
+
     return (
         <div className="container alto my-5">
             <div className="row text-center">
                 <div className="col">
-                    {id?<h1>{id}</h1>:titulo?<h1>{titulo}</h1>:<h1>Fragancias de diseñador</h1>}
+                    {id ? <h1>{id}</h1> : titulo ? <h1>{titulo}</h1> : <h1>Fragancias de diseñador</h1>}
                 </div>
             </div>
             <div className="row justify-content-center ">

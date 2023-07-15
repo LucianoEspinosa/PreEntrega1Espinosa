@@ -1,69 +1,37 @@
-// import { useState, useEffect } from "react";
-// import { useParams, Link, Navigate } from "react-router-dom";
-// import { getDoc, doc, updateDoc, getFirestore } from "firebase/firestore";
-
-
-// const EditProduct = () => {
-//     const { id } = useParams();
-//     const [item, setItem] = useState({});
-//     const [updated, setUpdated] = useState(false);
-
-//     useEffect(() => {
-//         const db = getFirestore();
-//         const producto = doc(db, "fragancias", id);
-//         getDoc(producto).then(resultado => {
-//             if (resultado.exists()) {
-//                 setItem({ id: resultado.id, ...resultado.data() })
-//             } else {
-//                 console.error("Error! No se encontró el producto!");
-//             }
-//         });
-//     }, []);
-
-//     const handleInputChange = (e) => {
-//         const { name, value } = e.target;
-//         setItem((prevItem) => ({
-//             ...prevItem,
-//             [name]: value
-//         }));
-//     };
-//     const actualizarProducto = () => {
-//         const db = getFirestore();
-//         const productoRef = doc(db, "fragancias", id);
-//         updateDoc(productoRef, item)
-//             .then(() => {
-//                 console.log("Producto actualizado correctamente");
-//                 setUpdated(true);
-//             })
-//             .catch((error) => {
-//                 console.error("Error al actualizar el producto:", error);
-//             });
-//     };
-
-//     if (updated) {
-//         return <Navigate to="/administrator" />;
-//     }
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
-import { updateDoc, getFirestore, doc } from "firebase/firestore";
+import { getDoc, doc, updateDoc, getFirestore } from "firebase/firestore";
 
-const EditProduct = ({ item }) => {
+
+const EditProduct = () => {
     const { id } = useParams();
+    const [item, setItem] = useState({});
     const [updated, setUpdated] = useState(false);
-    const [editedItem, setEditedItem] = useState(item);
+
+    useEffect(() => {
+        console.log("consultando");
+        const db = getFirestore();
+        const producto = doc(db, "fragancias", id);
+        getDoc(producto).then(resultado => {
+            if (resultado.exists()) {
+                setItem({ id: resultado.id, ...resultado.data() })
+            } else {
+                console.error("Error! No se encontró el producto!");
+            }
+        });
+    }, [id]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setEditedItem((prevItem) => ({
+        setItem((prevItem) => ({
             ...prevItem,
             [name]: value
         }));
     };
-
     const actualizarProducto = () => {
         const db = getFirestore();
         const productoRef = doc(db, "fragancias", id);
-        updateDoc(productoRef, editedItem)
+        updateDoc(productoRef, item)
             .then(() => {
                 console.log("Producto actualizado correctamente");
                 setUpdated(true);
@@ -78,8 +46,8 @@ const EditProduct = ({ item }) => {
     }
     return (
         <div className="container py-5">
-            <h1 className="row">Editar Producto</h1>
-            <form className="row justify-content-center">
+            <div className="row text-center text-md-start"><h1 >Editar Producto</h1></div>
+            <form className="row justify-content-center my-3">
                 <div className="mb-3 col-md-6">
                     <label htmlFor="marca" className="form-label">Marca:</label>
                     <input type="text" className="form-control" id="marca" name="marca" value={item.marca || ""} onChange={handleInputChange} />
@@ -122,12 +90,10 @@ const EditProduct = ({ item }) => {
                     <input type="number" className="form-control" id="stock" name="stock" value={item.stock || 0} onChange={handleInputChange} />
                 </div>
             </form>
-            <button type="button" className="btn btn-primary col-md-2 offset-md-2" onClick={actualizarProducto}>Actualizar</button>
-            <Link to="/admin" className="btn btn-primary  col-md-2 offset-md-4">Regresar</Link>
+            <button type="button" className="btn btn-success col-4 offset-1 col-md-2 offset-md-2" onClick={actualizarProducto}>Actualizar</button>
+            <Link to="/admin" className="btn btn-primary col-4 offset-2 col-md-2 offset-md-4">Regresar</Link>
         </div>
     );
 };
 
 export default EditProduct;
-
-
